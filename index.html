@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+    }
+    #callBtn {
+      background-color: #1f2937;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-family: sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <button id="callBtn">🎙️ Call Us</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/index.umd.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      function init() {
+        if (window.Vapi) {
+          const vapi = new window.Vapi({
+            apiKey: "YOUR_PUBLIC_VAPI_KEY" // <-- Replace this before using
+          });
+
+          document.getElementById("callBtn").addEventListener("click", () => {
+            vapi.start();
+          });
+        } else {
+          setTimeout(init, 500);
+        }
+      }
+      init();
+    });
+  </script>
+</body>
+</html>
